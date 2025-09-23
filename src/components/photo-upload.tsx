@@ -79,12 +79,9 @@ export function PhotoUpload({ value, onChange, disabled = false, className = "" 
       {/* Preview Foto */}
       {preview && (
         <div className="relative">
-          <div className="w-32 h-32 mx-auto rounded-lg overflow-hidden border-2 border-gray-200">
-            <img
-              src={preview}
-              alt="Preview"
-              className="w-full h-full object-cover"
-            />
+          <div className="w-32 h-32 mx-auto rounded-lg overflow-hidden border-2 border-gray-2 00">
+            {/* Use next/image for consistency; Data URLs are supported */}
+            <img src={preview} alt="Preview" className="w-full h-full object-cover" />
           </div>
           <Button
             type="button"

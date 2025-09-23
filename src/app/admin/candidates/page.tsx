@@ -250,9 +250,11 @@ export default function AdminCandidates() {
                         <div className="flex items-center gap-2">
                           <div className="w-8 h-8 rounded-full overflow-hidden border border-gray-200">
                             {candidate.photo_url ? (
-                              <img
+                              <Image
                                 src={candidate.photo_url}
                                 alt={candidate.name}
+                                width={32}
+                                height={32}
                                 className="w-full h-full object-cover"
                                 onError={(e) => {
                                   const target = e.target as HTMLImageElement

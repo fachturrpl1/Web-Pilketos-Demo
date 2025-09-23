@@ -247,16 +247,18 @@ export default function PanitiaCandidates() {
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-200">
                     {candidate.photo_url ? (
-                      <img
+                      <Image
                         src={candidate.photo_url}
                         alt={candidate.name}
+                        width={48}
+                        height={48}
                         className="w-full h-full object-cover"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement
                           target.style.display = 'none'
                           const parent = target.parentElement
                           if (parent) {
-                            parent.innerHTML = '<div class="w-full h-full bg-blue-100 flex items-center justify-center"><svg class="h-6 w-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg></div>'
+                            parent.innerHTML = '<div class="w-full h-full bg-blue-100 flex items-center justify-center"><svg class="h-6 w-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule=\"evenodd\" d=\"M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z\" clip-rule=\"evenodd\"></path></svg></div>'
                           }
                         }}
                       />
@@ -340,16 +342,18 @@ export default function PanitiaCandidates() {
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-gray-200">
                     {viewingCandidate.photo_url ? (
-                      <img
+                      <Image
                         src={viewingCandidate.photo_url}
                         alt={viewingCandidate.name}
+                        width={64}
+                        height={64}
                         className="w-full h-full object-cover"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement
                           target.style.display = 'none'
                           const parent = target.parentElement
                           if (parent) {
-                            parent.innerHTML = '<div class="w-full h-full bg-blue-100 flex items-center justify-center"><svg class="h-8 w-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg></div>'
+                            parent.innerHTML = '<div class="w-full h-full bg-blue-100 flex items-center justify-center"><svg class="h-8 w-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule=\"evenodd\" d=\"M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z\" clip-rule=\"evenodd\"></path></svg></div>'
                           }
                         }}
                       />

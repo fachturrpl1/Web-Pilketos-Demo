@@ -10,16 +10,7 @@ import {
 import { useRole } from "@/contexts/RoleContext"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { 
-  IconStar, 
-  IconUsers, 
-  IconCheck, 
-  IconTrophy,
-  IconChartBar,
-  IconSettings,
-  IconUsersGroup,
-  IconClipboard
-} from "@tabler/icons-react"
+// Icons removed: not used on this page
 
 function MainContent() {
   return (

@@ -27,6 +27,13 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       }
+      ,
+      {
+        protocol: 'https',
+        hostname: '*.bing.net',
+        port: '',
+        pathname: '/**',
+      }
     ],
   },
 };

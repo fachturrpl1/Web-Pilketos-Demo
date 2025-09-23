@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 // Dialog component not available, using simple modal instead
 import { Candidate } from "@/types"
 import { IconUser, IconEye } from "@tabler/icons-react"
+import Image from "next/image"
 
 interface CandidateCardProps {
   candidate: Candidate
@@ -24,23 +25,24 @@ export function CandidateCard({
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   // Normalize mission to string[] so UI never shows raw JSON brackets
-  const missionItems = useMemo(() => {
-    if (Array.isArray(candidate.mission)) return candidate.mission
-    if (typeof candidate.mission === 'string') {
+  const missionItems = useMemo<string[]>(() => {
+    const mission = candidate.mission as unknown as string | string[]
+    if (Array.isArray(mission)) return mission.filter(Boolean)
+    if (typeof mission === 'string') {
       try {
-        const parsed = JSON.parse(candidate.mission)
-        if (Array.isArray(parsed)) return parsed
+        const parsed = JSON.parse(mission)
+        if (Array.isArray(parsed)) return parsed.filter(Boolean)
       } catch {
-        // ignore
+        // ignore JSON parse errors, fallback to newline split
       }
-      return candidate.mission.split('\n').filter(Boolean)
+      return mission.split('\n').map(s => s.trim()).filter(Boolean)
     }
-    return [] as string[]
+    return []
   }, [candidate.mission])
 
   const handleVote = () => {
     if (onVote && !hasVoted) {
-      onVote(candidate.id)
+      onVote(String(candidate.id))
     }
   }
 
@@ -49,8 +51,22 @@ export function CandidateCard({
       <Card className="hover:shadow-lg transition-shadow duration-200">
         <CardHeader className="pb-3">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
-              <IconUser className="h-6 w-6 text-blue-600" />
+            <div className="w-12 h-12 rounded-full overflow-hidden border bg-blue-50 flex items-center justify-center">
+              {candidate.photo_url ? (
+                <Image
+                  src={candidate.photo_url}
+                  alt={candidate.name}
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.style.display = 'none'
+                  }}
+                />
+              ) : (
+                <IconUser className="h-6 w-6 text-blue-600" />
+              )}
             </div>
             <div className="flex-1">
               <h3 className="font-semibold text-lg">{candidate.name}</h3>
@@ -95,7 +111,7 @@ export function CandidateCard({
                     <div>
                       <h4 className="font-semibold text-blue-600 mb-2">Misi</h4>
                       <div className="text-gray-700">
-                        {missionItems.map((item, index) => (
+                        {missionItems.map((item: string, index: number) => (
                           <div key={index} className="mb-1">
                             {index + 1}. {item}
                           </div>

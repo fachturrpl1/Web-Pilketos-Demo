@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useVoters } from "@/hooks/use-voters"
 import { useCandidates } from "@/hooks/use-candidates"
 import { 
@@ -14,7 +15,9 @@ import {
   IconClock,
   IconUser,
   IconLoader2,
-  IconPlus
+  IconPlus,
+  IconPencil,
+  IconTrash
 } from "@tabler/icons-react"
 import { useState } from "react"
 import { Voter } from "@/types/database"
@@ -23,7 +26,7 @@ export default function PanitiaVoters() {
   const { voters, loading, error, addVoter, editVoter, removeVoter } = useVoters()
   const { candidates } = useCandidates()
   const [searchTerm, setSearchTerm] = useState("")
-  const [filterStatus, setFilterStatus] = useState<"all" | "voted" | "not-voted">("all")
+  const [itemsPerPage, setItemsPerPage] = useState<5 | 10 | "all">(5)
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [editingVoter, setEditingVoter] = useState<Voter | null>(null)
@@ -31,11 +34,12 @@ export default function PanitiaVoters() {
   const filteredVoters = voters.filter(voter => {
     const matchesSearch = voter.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          voter.class.toLowerCase().includes(searchTerm.toLowerCase())
-    
-    if (filterStatus === "voted") return matchesSearch && voter.has_voted
-    if (filterStatus === "not-voted") return matchesSearch && !voter.has_voted
     return matchesSearch
   })
+
+  const displayedVoters = itemsPerPage === "all"
+    ? filteredVoters
+    : filteredVoters.slice(0, itemsPerPage)
 
   const getVotedCandidateName = (candidateId?: number) => {
     if (!candidateId) return "-"
@@ -126,65 +130,46 @@ export default function PanitiaVoters() {
       <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Daftar Pemilih</h1>
-          <p className="text-gray-600">Kelola daftar pemilih dan status voting</p>
+          <h1 className="text-3xl font-bold text-gray-900">Kelola Pemilih</h1>
+          <p className="text-gray-600">Kelola daftar pemilih</p>
         </div>
         <div className="flex gap-2"></div>
       </div>
 
-      {/* Statistics removed per request */}
-
       {/* Filters */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Filter dan Pencarian</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1">
-              <div className="relative">
-                <IconSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                <Input
-                  placeholder="Cari nama atau kelas..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10"
-                />
-              </div>
-            </div>
-            <div className="flex gap-2">
-              <Button
-                variant={filterStatus === "all" ? "default" : "outline"}
-                onClick={() => setFilterStatus("all")}
-                size="sm"
-              >
-                Semua
-              </Button>
-              <Button
-                variant={filterStatus === "voted" ? "default" : "outline"}
-                onClick={() => setFilterStatus("voted")}
-                size="sm"
-              >
-                Sudah Memilih
-              </Button>
-              <Button
-                variant={filterStatus === "not-voted" ? "default" : "outline"}
-                onClick={() => setFilterStatus("not-voted")}
-                size="sm"
-              >
-                Belum Memilih
-              </Button>
-            </div>
+      <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex-1">
+          <div className="relative">
+            <IconSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Input
+              placeholder="Cari nama atau kelas..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10"
+            />
           </div>
-        </CardContent>
-      </Card>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-gray-600">Tampilkan:</span>
+          <Select value={itemsPerPage.toString()} onValueChange={(value) => setItemsPerPage(value === "all" ? "all" : parseInt(value) as 5 | 10)}>
+            <SelectTrigger className="w-32">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="5">5 data</SelectItem>
+              <SelectItem value="10">10 data</SelectItem>
+              <SelectItem value="all">Semua</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
 
       {/* Voters Table */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Daftar Pemilih ({filteredVoters.length} dari {voters.length})</CardTitle>
-        </CardHeader>
-        <CardContent>
+      <div className="bg-white rounded-lg border">
+        <div className="p-6 border-b">
+          <h2 className="text-lg font-semibold">Daftar Pemilih ({displayedVoters.length} dari {filteredVoters.length})</h2>
+        </div>
+        <div className="p-6">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
@@ -199,7 +184,7 @@ export default function PanitiaVoters() {
                 </tr>
               </thead>
               <tbody>
-                {filteredVoters.map((voter, index) => (
+                {displayedVoters.map((voter, index) => (
                   <tr key={voter.id} className="border-b hover:bg-gray-50">
                     <td className="p-3 text-gray-600">{index + 1}</td>
                     <td className="p-3">
@@ -212,20 +197,20 @@ export default function PanitiaVoters() {
                     </td>
                     <td className="p-3 text-gray-600">{voter.class}</td>
                     <td className="p-3">
-                    {voter.has_voted ? (
-                      <Badge className="bg-green-100 text-green-700">
-                        <IconCheck className="h-3 w-3 mr-1" />
-                        Sudah Memilih
-                      </Badge>
-                    ) : (
-                      <Badge variant="secondary" className="bg-amber-100 text-amber-700">
-                        <IconClock className="h-3 w-3 mr-1" />
-                        Belum Memilih
-                      </Badge>
-                    )}
+                      {voter.has_voted ? (
+                        <Badge className="bg-green-100 text-green-700">
+                          <IconCheck className="h-3 w-3 mr-1" />
+                          Sudah Memilih
+                        </Badge>
+                      ) : (
+                        <Badge variant="secondary" className="bg-amber-100 text-amber-700">
+                          <IconClock className="h-3 w-3 mr-1" />
+                          Belum Memilih
+                        </Badge>
+                      )}
                     </td>
                     <td className="p-3 text-gray-600">
-                      {voter.has_voted ? getVotedCandidateName(voter.voted_for) : "-"}
+                      {voter.has_voted ? getVotedCandidateName(voter.voted_for || undefined) : "-"}
                     </td>
                     <td className="p-3 text-gray-600">
                       {voter.voted_at ? new Date(voter.voted_at).toLocaleString() : "-"}
@@ -233,10 +218,16 @@ export default function PanitiaVoters() {
                     <td className="p-3">
                       <div className="flex gap-1">
                         <Button variant="outline" size="sm" onClick={() => setEditingVoter(voter)}>
-                          Edit
+                          <IconPencil className="h-4 w-4" />
                         </Button>
-                        <Button variant="outline" size="sm" className="text-red-600" onClick={() => handleDeleteVoter(voter.id)} disabled={isSubmitting}>
-                          Hapus
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => handleDeleteVoter(voter.id)}
+                          className="text-red-600 hover:text-red-700"
+                          disabled={isSubmitting}
+                        >
+                          <IconTrash className="h-4 w-4" />
                         </Button>
                       </div>
                     </td>
@@ -245,8 +236,8 @@ export default function PanitiaVoters() {
               </tbody>
             </table>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Add Voter Modal */}
       {isAddDialogOpen && (

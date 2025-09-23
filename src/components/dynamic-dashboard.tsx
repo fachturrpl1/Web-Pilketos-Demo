@@ -267,10 +267,7 @@ export function DynamicDashboard() {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Periode Voting</span>
-                <span className="text-sm font-medium">{startDate ? startDate.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }) : '-'} - {endDate ? endDate.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }) : '-'}</span>
-              </div>
+              
               <div className="flex items-center justify-between">
                 <span className="text-sm text-gray-600">Status</span>
                 <Badge className={isActive ? "bg-green-100 text-green-700" : "bg-gray-200 text-gray-700"}>
@@ -278,10 +275,7 @@ export function DynamicDashboard() {
                   {isActive ? "Aktif" : "Selesai"}
                 </Badge>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Waktu Tersisa</span>
-                <span className="text-sm font-medium">{remainingText}</span>
-              </div>
+              
             </div>
           </CardContent>
         </Card>

@@ -9,15 +9,14 @@ import {
   IconDatabase, 
   IconShield, 
   IconCpu, 
-  IconMemory, 
-  IconHardDrive,
+  IconGauge, 
   IconNetwork,
   IconClock,
   IconCheck,
   IconAlertTriangle,
   IconRefresh
 } from "@tabler/icons-react"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 export default function AdminSystemInfo() {
   const [systemStats, setSystemStats] = useState({
@@ -31,7 +30,7 @@ export default function AdminSystemInfo() {
     build: "2024.01.15"
   })
 
-  const [systemStatus, setSystemStatus] = useState({
+  const [systemStatus] = useState({
     database: "online",
     api: "online", 
     cache: "online",
@@ -106,7 +105,7 @@ export default function AdminSystemInfo() {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-gray-600 flex items-center gap-2">
-              <IconMemory className="h-4 w-4" />
+              <IconGauge className="h-4 w-4" />
               Memory Usage
             </CardTitle>
           </CardHeader>
@@ -124,7 +123,7 @@ export default function AdminSystemInfo() {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-gray-600 flex items-center gap-2">
-              <IconHardDrive className="h-4 w-4" />
+              <IconDatabase className="h-4 w-4" />
               Disk Usage
             </CardTitle>
           </CardHeader>
