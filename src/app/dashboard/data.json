@@ -1,0 +1,97 @@
+{
+  "candidates": [
+    {
+      "id": 1,
+      "name": "Ahmad Rizki",
+      "class": "XII IPA 1",
+      "vision": "Mewujudkan OSIS yang inovatif dan berprestasi",
+      "mission": [
+        "Meningkatkan kualitas pembelajaran siswa",
+        "Mengembangkan bakat dan minat siswa",
+        "Memperkuat solidaritas antar siswa"
+      ],
+      "votes": 45,
+      "avatar": "/avatars/ahmad.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Siti Nurhaliza",
+      "class": "XII IPS 2",
+      "vision": "OSIS yang peduli dan berkarakter",
+      "mission": [
+        "Meningkatkan kepedulian sosial",
+        "Mengembangkan karakter siswa",
+        "Memperkuat hubungan dengan alumni"
+      ],
+      "votes": 38,
+      "avatar": "/avatars/siti.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Budi Santoso",
+      "class": "XII IPA 3",
+      "vision": "OSIS yang kreatif dan berdaya saing",
+      "mission": [
+        "Mengembangkan kreativitas siswa",
+        "Meningkatkan prestasi akademik",
+        "Memperkuat ekstrakurikuler"
+      ],
+      "votes": 42,
+      "avatar": "/avatars/budi.jpg"
+    }
+  ],
+  "voters": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "class": "XII IPA 1",
+      "hasVoted": true,
+      "votedAt": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "class": "XII IPS 2",
+      "hasVoted": false,
+      "votedAt": null
+    },
+    {
+      "id": 3,
+      "name": "Bob Johnson",
+      "email": "bob@example.com",
+      "class": "XII IPA 3",
+      "hasVoted": true,
+      "votedAt": "2024-01-15T11:15:00Z"
+    }
+  ],
+  "election": {
+    "title": "Pemilihan Ketua OSIS 2024",
+    "startDate": "2024-01-15T08:00:00Z",
+    "endDate": "2024-01-15T16:00:00Z",
+    "status": "active",
+    "totalVoters": 150,
+    "votedCount": 125
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
