@@ -5,8 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { IconUpload, IconX, IconLoader2 } from "@tabler/icons-react"
-import { supabase } from "@/lib/supabase"
-import { ensurePhotoBucket } from "@/lib/setup-storage"
 
 interface PhotoUploadProps {
   value?: string
@@ -43,41 +41,20 @@ export function PhotoUpload({ value, onChange, disabled = false, className = "" 
     setIsUploading(true)
 
     try {
-      // Ensure bucket exists before uploading
-      const ensure = await ensurePhotoBucket()
-      if (!ensure.success) {
-        alert(`Gagal mengupload foto: ${ensure.error || 'Bucket not found'}`)
-        return
-      }
-      // Upload ke Supabase Storage (gunakan bucket candidates_photo)
-      const fileExt = file.name.split('.').pop()
-      const fileName = `candidate-${Date.now()}.${fileExt}`
-      const filePath = `candidates/${fileName}`
+      // Baca file secara lokal (tanpa koneksi ke storage/database)
+      const reader = new FileReader()
+      const dataUrl: string = await new Promise((resolve, reject) => {
+        reader.onload = () => resolve(reader.result as string)
+        reader.onerror = () => reject(new Error('Gagal membaca file'))
+        reader.readAsDataURL(file)
+      })
 
-      const { error: uploadError } = await supabase.storage
-        .from('candidates_photo')
-        .upload(filePath, file, {
-          cacheControl: '3600',
-          upsert: true,
-          contentType: file.type
-        })
-
-      if (uploadError) {
-        throw uploadError
-      }
-
-      // Get public URL
-      const { data } = supabase.storage
-        .from('candidates_photo')
-        .getPublicUrl(filePath)
-
-      const publicUrl = data.publicUrl
-      setPreview(publicUrl)
-      onChange(publicUrl)
+      setPreview(dataUrl)
+      onChange(dataUrl) // simpan sebagai Data URL pada state/form
     } catch (error: unknown) {
-      console.error('Upload error:', error)
+      console.error('Local read error:', error)
       const message = error instanceof Error ? error.message : 'Silakan coba lagi.'
-      alert(`Gagal mengupload foto: ${message}`)
+      alert(`Gagal memproses foto: ${message}`)
     } finally {
       setIsUploading(false)
     }
