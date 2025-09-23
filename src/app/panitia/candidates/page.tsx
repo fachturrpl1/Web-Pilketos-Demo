@@ -22,7 +22,6 @@ import { useState, useEffect } from "react"
 import { Candidate } from "@/types/database"
 import { testSupabaseConnection } from "@/lib/test-supabase"
 import { PhotoUpload } from "@/components/photo-upload"
-import { setupStorage } from "@/lib/setup-storage"
 import Image from "next/image"
 
 export default function PanitiaCandidates() {
@@ -208,16 +207,7 @@ export default function PanitiaCandidates() {
           >
             Test Edit
           </Button>
-          <Button 
-            onClick={async () => {
-              const result = await setupStorage()
-              alert(result.success ? 'Storage setup berhasil!' : `Error: ${result.error}`)
-            }}
-            variant="outline"
-            disabled={isSubmitting}
-          >
-            Setup Storage
-          </Button>
+          
           <Button onClick={() => setIsAddDialogOpen(true)} disabled={isSubmitting || !allowRegistration}>
           <IconPlus className="h-4 w-4 mr-2" />
           Tambah Kandidat
