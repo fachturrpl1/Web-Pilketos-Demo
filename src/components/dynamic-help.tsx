@@ -11,7 +11,6 @@ import {
   IconFileText,
   IconShieldCheck,
   IconUsersGroup,
-  IconChartBar,
   IconEye,
   IconSettings
 } from "@tabler/icons-react"
@@ -80,8 +79,7 @@ export function DynamicHelp() {
                 1. Buka menu &quot;Pengaturan&quot;<br/>
                 2. Atur tanggal mulai & selesai voting<br/>
                 3. Ubah status: Aktifkan Pemilihan, Izinkan Voting, Izinkan Registrasi Kandidat<br/>
-                4. Tentukan maksimal kandidat & wajib upload foto<br/>
-                5. Klik &quot;Simpan Pengaturan&quot;
+                4. Klik &quot;Simpan Pengaturan&quot;
               </p>
             </div>
           </CardContent>
@@ -108,7 +106,7 @@ export function DynamicHelp() {
         </Card>
       </div>
 
-      <Card>
+      {/* <Card>
         <CardHeader>
           <CardTitle>Kontak Dukungan</CardTitle>
         </CardHeader>
@@ -132,7 +130,7 @@ export function DynamicHelp() {
             </div>
           </div>
         </CardContent>
-      </Card>
+      </Card> */}
     </div>
   )
 
@@ -168,13 +166,6 @@ export function DynamicHelp() {
                 4. Gunakan grafik untuk visualisasi hasil
               </p>
             </div>
-            <div>
-              <h4 className="font-semibold">Penyelarasan Data</h4>
-              <p className="text-sm text-gray-600">
-                - Perolehan suara dihitung dari voters.voted_for<br/>
-                - Total suara = jumlah voters dengan has_voted = true
-              </p>
-            </div>
           </CardContent>
         </Card>
 
@@ -192,15 +183,6 @@ export function DynamicHelp() {
                 1. Periksa profil & foto kandidat<br/>
                 2. Tambah/Edit/Hapus kandidat sesuai kebutuhan<br/>
                 3. Pastikan misi/visi tampil rapi (tanpa []), perbaiki jika perlu
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold">Kelola Kampanye</h4>
-              <p className="text-sm text-gray-600">
-                - Monitor konten kampanye<br/>
-                - Pastikan tidak ada pelanggaran<br/>
-                - Koordinasi jadwal debat<br/>
-                - Dokumentasi kegiatan
               </p>
             </div>
           </CardContent>
@@ -222,110 +204,9 @@ export function DynamicHelp() {
                 3. Pantau status has_voted & pilihan kandidat
               </p>
             </div>
-            <div>
-              <h4 className="font-semibold">Bantuan Teknis Pemilih</h4>
-              <p className="text-sm text-gray-600">
-                - Reset password yang lupa<br/>
-                - Bantuan login<br/>
-                - Panduan voting<br/>
-                - Troubleshooting umum
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <IconFileText className="h-5 w-5" />
-              Laporan & Dokumentasi
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <div>
-              <h4 className="font-semibold">Laporan Harian</h4>
-              <p className="text-sm text-gray-600">
-                1. Catat aktivitas harian<br/>
-                2. Dokumentasikan masalah<br/>
-                3. Laporkan ke admin<br/>
-                4. Update progress
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold">Dokumentasi Proses</h4>
-              <p className="text-sm text-gray-600">
-                - Screenshot hasil voting<br/>
-                - Log aktivitas sistem<br/>
-                - Foto kegiatan<br/>
-                - Catatan kejadian penting
-              </p>
-            </div>
           </CardContent>
         </Card>
       </div>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Prosedur Darurat</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="border-l-4 border-red-500 pl-4">
-              <h4 className="font-semibold text-red-700">Sistem Down</h4>
-              <p className="text-sm text-gray-600">
-                1. Segera hubungi admin teknis<br/>
-                2. Informasikan ke pemilih<br/>
-                3. Siapkan backup manual<br/>
-                4. Dokumentasikan waktu kejadian
-              </p>
-            </div>
-            <div className="border-l-4 border-yellow-500 pl-4">
-              <h4 className="font-semibold text-yellow-700">Kecurangan Terdeteksi</h4>
-              <p className="text-sm text-gray-600">
-                1. Screenshot bukti<br/>
-                2. Laporkan ke admin<br/>
-                3. Blokir akun sementara<br/>
-                4. Dokumentasikan kejadian
-              </p>
-            </div>
-            <div className="border-l-4 border-blue-500 pl-4">
-              <h4 className="font-semibold text-blue-700">Masalah Teknis Pemilih</h4>
-              <p className="text-sm text-gray-600">
-                1. Identifikasi masalah<br/>
-                2. Berikan solusi cepat<br/>
-                3. Jika tidak bisa, hubungi admin<br/>
-                4. Catat untuk referensi
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Kontak Dukungan</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <h4 className="font-semibold mb-2">Admin Sistem</h4>
-              <p className="text-sm text-gray-600">
-                Email: admin@osis-school.edu<br/>
-                Phone: (021) 1234-5678<br/>
-                Jam: Senin-Jumat 08:00-17:00
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Koordinator Panitia</h4>
-              <p className="text-sm text-gray-600">
-                Email: panitia@osis-school.edu<br/>
-                Phone: (021) 1234-5679<br/>
-                Tersedia selama pemilihan
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   )
 
@@ -366,8 +247,6 @@ export function DynamicHelp() {
               <p className="text-sm text-gray-600">
                 - Foto profil kandidat<br/>
                 - Visi dan misi<br/>
-                - Pengalaman organisasi<br/>
-                - Prestasi akademik<br/>
                 - Program kerja
               </p>
             </div>
@@ -428,114 +307,15 @@ export function DynamicHelp() {
                 - Persentase dari total suara
               </p>
             </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <IconClock className="h-5 w-5" />
-              Jadwal &amp; Informasi
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
             <div>
-              <h4 className="font-semibold">Jadwal Pemilihan</h4>
+              <h4 className="font-semibold">Catatan</h4>
               <p className="text-sm text-gray-600">
-                - Periode kampanye: 10-14 Jan 2024<br/>
-                - Periode voting: 15-20 Jan 2024<br/>
-                - Pengumuman hasil: 21 Jan 2024<br/>
-                - Pelantikan: 25 Jan 2024
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold">Informasi Penting</h4>
-              <p className="text-sm text-gray-600">
-                - Voting hanya bisa dilakukan sekali<br/>
-                - Pastikan identitas sudah terverifikasi<br/>
-                - Simpan bukti voting<br/>
-                - Laporkan masalah segera
+                - Hasil akan ditampilkan setelah voting selesai<br/>
               </p>
             </div>
           </CardContent>
         </Card>
       </div>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Masalah Umum &amp; Solusi</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="border-l-4 border-red-500 pl-4">
-              <h4 className="font-semibold text-red-700">Tidak Bisa Login</h4>
-              <p className="text-sm text-gray-600">
-                <strong>Solusi:</strong><br/>
-                1. Periksa username dan password<br/>
-                2. Pastikan koneksi internet stabil<br/>
-                3. Clear cache browser<br/>
-                4. Hubungi panitia jika masih bermasalah
-              </p>
-            </div>
-            <div className="border-l-4 border-yellow-500 pl-4">
-              <h4 className="font-semibold text-yellow-700">Lupa Password</h4>
-              <p className="text-sm text-gray-600">
-                <strong>Solusi:</strong><br/>
-                1. Klik &quot;Lupa Password&quot;<br/>
-                2. Masukkan email terdaftar<br/>
-                3. Cek email untuk reset link<br/>
-                4. Buat password baru
-              </p>
-            </div>
-            <div className="border-l-4 border-blue-500 pl-4">
-              <h4 className="font-semibold text-blue-700">Voting Gagal</h4>
-              <p className="text-sm text-gray-600">
-                <strong>Solusi:</strong><br/>
-                1. Refresh halaman<br/>
-                2. Pastikan koneksi internet stabil<br/>
-                3. Coba browser lain<br/>
-                4. Hubungi panitia jika masih gagal
-              </p>
-            </div>
-            <div className="border-l-4 border-green-500 pl-4">
-              <h4 className="font-semibold text-green-700">Sudah Voting Tapi Status Belum Update</h4>
-              <p className="text-sm text-gray-600">
-                <strong>Solusi:</strong><br/>
-                1. Tunggu beberapa menit<br/>
-                2. Refresh halaman<br/>
-                3. Logout dan login kembali<br/>
-                4. Hubungi panitia jika masih bermasalah
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Kontak Dukungan</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <h4 className="font-semibold mb-2">Panitia Pemilihan</h4>
-              <p className="text-sm text-gray-600">
-                Email: panitia@osis-school.edu<br/>
-                Phone: (021) 1234-5679<br/>
-                Jam: 08:00-17:00 (selama pemilihan)
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-2">Bantuan Teknis</h4>
-              <p className="text-sm text-gray-600">
-                Email: support@osis-school.edu<br/>
-                Phone: (021) 1234-5680<br/>
-                Available 24/7 selama pemilihan
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   )
 
