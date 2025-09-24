@@ -20,13 +20,7 @@ export default function AdminSettings() {
     alert("Pengaturan berhasil disimpan!")
   }
 
-  const handleExportSettings = () => {
-    alert("Fitur export pengaturan akan segera tersedia")
-  }
-
-  const handleImportSettings = () => {
-    alert("Fitur import pengaturan akan segera tersedia")
-  }
+  // Import/Export removed per request
 
   if (loading) {
     return (
@@ -63,12 +57,6 @@ export default function AdminSettings() {
           <p className="text-gray-600">Konfigurasi sistem pemilihan ketua OSIS</p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" onClick={handleImportSettings}>
-            Import
-          </Button>
-          <Button variant="outline" onClick={handleExportSettings}>
-            Export
-          </Button>
           <Button onClick={handleSaveSettings}>
             Simpan Pengaturan
           </Button>

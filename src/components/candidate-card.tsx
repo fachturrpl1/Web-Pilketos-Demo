@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 // Dialog component not available, using simple modal instead
 import { Candidate } from "@/types"
 import { IconUser, IconEye } from "@tabler/icons-react"
-import Image from "next/image"
+import { ExternalImage } from "@/components/ui/external-image"
 
 interface CandidateCardProps {
   candidate: Candidate
@@ -53,16 +53,12 @@ export function CandidateCard({
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full overflow-hidden border bg-blue-50 flex items-center justify-center">
               {candidate.photo_url ? (
-                <Image
+                <ExternalImage
                   src={candidate.photo_url}
                   alt={candidate.name}
                   width={48}
                   height={48}
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement
-                    target.style.display = 'none'
-                  }}
                 />
               ) : (
                 <IconUser className="h-6 w-6 text-blue-600" />

@@ -64,35 +64,7 @@ export function DynamicHelp() {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <IconChartBar className="h-5 w-5" />
-              Kelola Pemilih
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <div>
-              <h4 className="font-semibold">Import Data Pemilih</h4>
-              <p className="text-sm text-gray-600">
-                1. Siapkan file Excel dengan format:<br/>
-                - Nama, Kelas, NIS, Email<br/>
-                2. Klik &quot;Import Data&quot;<br/>
-                3. Pilih file Excel<br/>
-                4. Klik &quot;Upload&quot;
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold">Reset Password Pemilih</h4>
-              <p className="text-sm text-gray-600">
-                1. Pilih pemilih yang lupa password<br/>
-                2. Klik &quot;Reset Password&quot;<br/>
-                3. Password akan direset ke default<br/>
-                4. Informasikan ke pemilih
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+        {/* Kelola Pemilih card removed as requested */}
 
         <Card>
           <CardHeader>
@@ -103,21 +75,13 @@ export function DynamicHelp() {
           </CardHeader>
           <CardContent className="space-y-3">
             <div>
-              <h4 className="font-semibold">Mengatur Periode Voting</h4>
+              <h4 className="font-semibold">Periode & Status Voting</h4>
               <p className="text-sm text-gray-600">
-                1. Klik menu &quot;Pengaturan&quot;<br/>
-                2. Set tanggal mulai dan selesai<br/>
-                3. Aktifkan/matikan voting<br/>
-                4. Klik &quot;Simpan&quot;
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold">Konfigurasi Sistem</h4>
-              <p className="text-sm text-gray-600">
-                - Email notification settings<br/>
-                - Security settings<br/>
-                - Backup configuration<br/>
-                - Log retention period
+                1. Buka menu &quot;Pengaturan&quot;<br/>
+                2. Atur tanggal mulai & selesai voting<br/>
+                3. Ubah status: Aktifkan Pemilihan, Izinkan Voting, Izinkan Registrasi Kandidat<br/>
+                4. Tentukan maksimal kandidat & wajib upload foto<br/>
+                5. Klik &quot;Simpan Pengaturan&quot;
               </p>
             </div>
           </CardContent>
@@ -127,26 +91,17 @@ export function DynamicHelp() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <IconFileText className="h-5 w-5" />
-              Monitoring &amp; Laporan
+              Hasil Pemilihan
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <div>
-              <h4 className="font-semibold">Dashboard Monitoring</h4>
+              <h4 className="font-semibold">Melihat Hasil</h4>
               <p className="text-sm text-gray-600">
-                - Real-time voting statistics<br/>
-                - Participation rate tracking<br/>
-                - System performance metrics<br/>
-                - Security alerts
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold">Export Laporan</h4>
-              <p className="text-sm text-gray-600">
-                1. Pilih periode laporan<br/>
-                2. Pilih format (PDF/Excel)<br/>
-                3. Klik &quot;Generate Report&quot;<br/>
-                4. Download file
+                1. Buka menu &quot;Hasil Pemilihan&quot;<br/>
+                2. Lihat total suara dan kandidat terdaftar<br/>
+                3. Tinjau peringkat & perolehan suara per kandidat<br/>
+                4. Gunakan grafik untuk visualisasi hasil
               </p>
             </div>
           </CardContent>
@@ -199,27 +154,25 @@ export function DynamicHelp() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <IconChartBar className="h-5 w-5" />
-              Monitoring Voting
+              <IconFileText className="h-5 w-5" />
+              Hasil Pemilihan
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <div>
-              <h4 className="font-semibold">Pantau Aktivitas Real-time</h4>
+              <h4 className="font-semibold">Melihat Hasil</h4>
               <p className="text-sm text-gray-600">
-                1. Akses menu &quot;Monitoring Voting&quot;<br/>
-                2. Lihat statistik partisipasi<br/>
-                3. Monitor jumlah suara masuk<br/>
-                4. Cek status voting per kelas
+                1. Buka menu &quot;Hasil Pemilihan&quot;<br/>
+                2. Lihat total suara (dari voters) & kandidat terdaftar<br/>
+                3. Tinjau peringkat & perolehan suara per kandidat<br/>
+                4. Gunakan grafik untuk visualisasi hasil
               </p>
             </div>
             <div>
-              <h4 className="font-semibold">Identifikasi Masalah</h4>
+              <h4 className="font-semibold">Penyelarasan Data</h4>
               <p className="text-sm text-gray-600">
-                - Pemilih yang belum voting<br/>
-                - Error saat voting<br/>
-                - Koneksi jaringan bermasalah<br/>
-                - Duplikasi suara
+                - Perolehan suara dihitung dari voters.voted_for<br/>
+                - Total suara = jumlah voters dengan has_voted = true
               </p>
             </div>
           </CardContent>
@@ -234,12 +187,11 @@ export function DynamicHelp() {
           </CardHeader>
           <CardContent className="space-y-3">
             <div>
-              <h4 className="font-semibold">Verifikasi Data Kandidat</h4>
+              <h4 className="font-semibold">Verifikasi & Edit Data Kandidat</h4>
               <p className="text-sm text-gray-600">
-                1. Periksa kelengkapan profil<br/>
-                2. Validasi dokumen pendukung<br/>
-                3. Konfirmasi foto profil<br/>
-                4. Update status verifikasi
+                1. Periksa profil & foto kandidat<br/>
+                2. Tambah/Edit/Hapus kandidat sesuai kebutuhan<br/>
+                3. Pastikan misi/visi tampil rapi (tanpa []), perbaiki jika perlu
               </p>
             </div>
             <div>
@@ -263,12 +215,11 @@ export function DynamicHelp() {
           </CardHeader>
           <CardContent className="space-y-3">
             <div>
-              <h4 className="font-semibold">Verifikasi Pemilih</h4>
+              <h4 className="font-semibold">Kelola & Verifikasi Pemilih</h4>
               <p className="text-sm text-gray-600">
-                1. Periksa kelengkapan data<br/>
-                2. Validasi status siswa aktif<br/>
-                3. Konfirmasi kelas dan NIS<br/>
-                4. Update status verifikasi
+                1. Tambah/Edit/Hapus data pemilih<br/>
+                2. Periksa kelengkapan & validitas data<br/>
+                3. Pantau status has_voted & pilihan kandidat
               </p>
             </div>
             <div>
@@ -462,12 +413,11 @@ export function DynamicHelp() {
           </CardHeader>
           <CardContent className="space-y-3">
             <div>
-              <h4 className="font-semibold">Melihat Hasil Sementara</h4>
+              <h4 className="font-semibold">Melihat Hasil</h4>
               <p className="text-sm text-gray-600">
                 1. Klik menu &quot;Hasil&quot;<br/>
                 2. Lihat peringkat kandidat<br/>
-                3. Periksa jumlah suara<br/>
-                4. Update otomatis setiap 5 menit
+                3. Periksa jumlah suara & persentase
               </p>
             </div>
             <div>
@@ -475,8 +425,7 @@ export function DynamicHelp() {
               <p className="text-sm text-gray-600">
                 - Peringkat kandidat<br/>
                 - Jumlah suara per kandidat<br/>
-                - Persentase kemenangan<br/>
-                - Tingkat partisipasi
+                - Persentase dari total suara
               </p>
             </div>
           </CardContent>

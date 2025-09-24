@@ -21,7 +21,7 @@ import {
 import { useState } from "react"
 import { Candidate } from "@/types/database"
 import { PhotoUpload } from "@/components/photo-upload"
-import Image from "next/image"
+import { ExternalImage } from "@/components/ui/external-image"
 
 export default function AdminCandidates() {
   const { candidates, loading, error, addCandidate, editCandidate, removeCandidate } = useCandidates()
@@ -250,20 +250,12 @@ export default function AdminCandidates() {
                         <div className="flex items-center gap-2">
                           <div className="w-8 h-8 rounded-full overflow-hidden border border-gray-200">
                             {candidate.photo_url ? (
-                              <Image
+                              <ExternalImage
                                 src={candidate.photo_url}
                                 alt={candidate.name}
                                 width={32}
                                 height={32}
                                 className="w-full h-full object-cover"
-                                onError={(e) => {
-                                  const target = e.target as HTMLImageElement
-                                  target.style.display = 'none'
-                                  const parent = target.parentElement
-                                  if (parent) {
-                                    parent.innerHTML = '<div class="w-full h-full bg-gray-100 flex items-center justify-center"><svg class="h-4 w-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg></div>'
-                                  }
-                                }}
                               />
                             ) : (
                               <div className="w-full h-full bg-gray-100 flex items-center justify-center">
