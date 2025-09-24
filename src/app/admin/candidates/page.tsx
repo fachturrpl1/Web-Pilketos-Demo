@@ -49,6 +49,9 @@ export default function AdminCandidates() {
     candidate.class.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
+  // Urutkan kandidat berdasarkan jumlah suara (terbanyak ke paling sedikit)
+  const sortedCandidates = [...filteredCandidates].sort((a, b) => b.votes - a.votes)
+
   const handleAddCandidate = async (newCandidate: Omit<Candidate, 'id' | 'votes'>) => {
     if (!allowRegistration) {
       alert('Registrasi kandidat ditutup. Tidak dapat menambah kandidat baru.')
@@ -223,7 +226,7 @@ export default function AdminCandidates() {
       {/* Candidates Table */}
       <Card>
         <CardHeader>
-          <CardTitle>Daftar Kandidat ({filteredCandidates.length})</CardTitle>
+          <CardTitle>Daftar Kandidat ({sortedCandidates.length})</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
@@ -239,7 +242,7 @@ export default function AdminCandidates() {
                 </tr>
               </thead>
               <tbody>
-                {filteredCandidates.map((candidate, index) => {
+                {sortedCandidates.map((candidate, index) => {
                   const totalVotes = voters.filter(v => v.has_voted).length
                   const percentage = totalVotes > 0 ? ((candidate.votes / totalVotes) * 100).toFixed(1) : '0'
                   
