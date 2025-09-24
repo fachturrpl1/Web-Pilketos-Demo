@@ -134,10 +134,10 @@ export default function MemberResults() {
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <IconClock className="h-4 w-4 text-amber-500" />
-              <span className="text-sm font-medium">Berlangsung</span>
+              <IconClock className="h-4 w-4 text-green-600" />
+              <span className="text-sm font-medium">Selesai</span>
             </div>
-            <p className="text-xs text-gray-500">Pemilihan aktif</p>
+            <p className="text-xs text-gray-500">Pemilihan selesai</p>
           </CardContent>
         </Card>
       </div>
@@ -156,7 +156,6 @@ export default function MemberResults() {
             <li>Hasil yang ditampilkan adalah hasil sementara</li>
             <li>Data akan diperbarui secara real-time selama periode voting</li>
             <li>Hasil final akan diumumkan setelah periode voting selesai</li>
-            <li>Jika ada pertanyaan, silakan hubungi panitia pemilihan</li>
           </ul>
         </CardContent>
       </Card>
