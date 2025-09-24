@@ -83,7 +83,10 @@ export function DynamicDashboard() {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {candidatesWithVotes.map((candidate) => (
+              {candidatesWithVotes
+                .slice()
+                .sort((a, b) => b.votes - a.votes)
+                .map((candidate) => (
                 <div key={candidate.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                   <div>
                     <p className="font-medium">{candidate.name}</p>
