@@ -14,9 +14,9 @@ export default function MemberVoting() {
   const { voters } = useVoters()
   const { settings, loading: settingsLoading } = useElectionSettings()
   const [hasVoted, setHasVoted] = useState(false)
-  const [votedFor, setVotedFor] = useState<number | undefined>(undefined)
+  const [votedFor, setVotedFor] = useState<string | undefined>(undefined)
 
-  const handleVote = (candidateId: number) => {
+  const handleVote = (candidateId: string) => {
     setHasVoted(true)
     setVotedFor(candidateId)
     alert(`Vote berhasil diberikan untuk kandidat dengan ID: ${candidateId}`)

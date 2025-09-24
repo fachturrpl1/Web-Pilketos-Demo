@@ -56,9 +56,9 @@ export function DynamicHelp() {
               <h4 className="font-semibold">Mengedit Kandidat</h4>
               <p className="text-sm text-gray-600">
                 1. Pilih kandidat yang akan diedit<br/>
-                2. Klik tombol "Edit"<br/>
+                2. Klik tombol &quot;Edit&quot;<br/>
                 3. Ubah data yang diperlukan<br/>
-                4. Klik "Update"
+                4. Klik &quot;Update&quot;
               </p>
             </div>
           </CardContent>
@@ -77,16 +77,16 @@ export function DynamicHelp() {
               <p className="text-sm text-gray-600">
                 1. Siapkan file Excel dengan format:<br/>
                 - Nama, Kelas, NIS, Email<br/>
-                2. Klik "Import Data"<br/>
+                2. Klik &quot;Import Data&quot;<br/>
                 3. Pilih file Excel<br/>
-                4. Klik "Upload"
+                4. Klik &quot;Upload&quot;
               </p>
             </div>
             <div>
               <h4 className="font-semibold">Reset Password Pemilih</h4>
               <p className="text-sm text-gray-600">
                 1. Pilih pemilih yang lupa password<br/>
-                2. Klik "Reset Password"<br/>
+                2. Klik &quot;Reset Password&quot;<br/>
                 3. Password akan direset ke default<br/>
                 4. Informasikan ke pemilih
               </p>
@@ -105,10 +105,10 @@ export function DynamicHelp() {
             <div>
               <h4 className="font-semibold">Mengatur Periode Voting</h4>
               <p className="text-sm text-gray-600">
-                1. Klik menu "Pengaturan"<br/>
+                1. Klik menu &quot;Pengaturan&quot;<br/>
                 2. Set tanggal mulai dan selesai<br/>
                 3. Aktifkan/matikan voting<br/>
-                4. Klik "Simpan"
+                4. Klik &quot;Simpan&quot;
               </p>
             </div>
             <div>
@@ -127,7 +127,7 @@ export function DynamicHelp() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <IconFileText className="h-5 w-5" />
-              Monitoring & Laporan
+              Monitoring &amp; Laporan
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -145,7 +145,7 @@ export function DynamicHelp() {
               <p className="text-sm text-gray-600">
                 1. Pilih periode laporan<br/>
                 2. Pilih format (PDF/Excel)<br/>
-                3. Klik "Generate Report"<br/>
+                3. Klik &quot;Generate Report&quot;<br/>
                 4. Download file
               </p>
             </div>
@@ -207,7 +207,7 @@ export function DynamicHelp() {
             <div>
               <h4 className="font-semibold">Pantau Aktivitas Real-time</h4>
               <p className="text-sm text-gray-600">
-                1. Akses menu "Monitoring Voting"<br/>
+                1. Akses menu &quot;Monitoring Voting&quot;<br/>
                 2. Lihat statistik partisipasi<br/>
                 3. Monitor jumlah suara masuk<br/>
                 4. Cek status voting per kelas
@@ -404,7 +404,7 @@ export function DynamicHelp() {
             <div>
               <h4 className="font-semibold">Cara Melihat Profil Kandidat</h4>
               <p className="text-sm text-gray-600">
-                1. Klik menu "Profil Kandidat"<br/>
+                1. Klik menu &quot;Profil Kandidat&quot;<br/>
                 2. Pilih kandidat yang ingin dilihat<br/>
                 3. Baca visi dan misi<br/>
                 4. Lihat pengalaman dan prestasi
@@ -435,7 +435,7 @@ export function DynamicHelp() {
               <h4 className="font-semibold">Cara Memberikan Suara</h4>
               <p className="text-sm text-gray-600">
                 1. Login ke sistem<br/>
-                2. Klik menu "Voting"<br/>
+                2. Klik menu &quot;Voting&quot;<br/>
                 3. Pilih kandidat favorit<br/>
                 4. Konfirmasi pilihan<br/>
                 5. Submit suara
@@ -464,7 +464,7 @@ export function DynamicHelp() {
             <div>
               <h4 className="font-semibold">Melihat Hasil Sementara</h4>
               <p className="text-sm text-gray-600">
-                1. Klik menu "Hasil"<br/>
+                1. Klik menu &quot;Hasil&quot;<br/>
                 2. Lihat peringkat kandidat<br/>
                 3. Periksa jumlah suara<br/>
                 4. Update otomatis setiap 5 menit
@@ -486,7 +486,7 @@ export function DynamicHelp() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <IconClock className="h-5 w-5" />
-              Jadwal & Informasi
+              Jadwal &amp; Informasi
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -514,7 +514,7 @@ export function DynamicHelp() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Masalah Umum & Solusi</CardTitle>
+          <CardTitle>Masalah Umum &amp; Solusi</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -532,7 +532,7 @@ export function DynamicHelp() {
               <h4 className="font-semibold text-yellow-700">Lupa Password</h4>
               <p className="text-sm text-gray-600">
                 <strong>Solusi:</strong><br/>
-                1. Klik "Lupa Password"<br/>
+                1. Klik &quot;Lupa Password&quot;<br/>
                 2. Masukkan email terdaftar<br/>
                 3. Cek email untuk reset link<br/>
                 4. Buat password baru

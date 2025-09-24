@@ -13,7 +13,6 @@ import {
   IconCheck, 
   IconClock,
   IconUser,
-  IconPlus,
   IconPencil,
   IconTrash,
   IconLoader2
@@ -280,8 +279,9 @@ interface VoterFormProps {
 }
 
 function VoterForm({ voter, onSubmit, onCancel }: VoterFormProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Omit<Voter, 'id'>>({
     name: voter?.name || "",
+    email: voter?.email || "",
     class: voter?.class || "",
     has_voted: voter?.has_voted || false,
     voted_for: voter?.voted_for || null,
@@ -303,6 +303,18 @@ function VoterForm({ voter, onSubmit, onCancel }: VoterFormProps) {
           id="name"
           value={formData.name}
           onChange={(e) => setFormData({...formData, name: e.target.value})}
+          required
+          className="w-full"
+        />
+      </div>
+      
+      <div className="space-y-2">
+        <Label htmlFor="email" className="text-sm font-medium text-gray-700">Email</Label>
+        <Input
+          id="email"
+          type="email"
+          value={formData.email}
+          onChange={(e) => setFormData({...formData, email: e.target.value})}
           required
           className="w-full"
         />

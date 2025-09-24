@@ -16,21 +16,30 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 })
 
 // Helper function untuk error handling
-export const handleSupabaseError = (error: any) => {
+export const handleSupabaseError = (error: unknown) => {
+  const message = (typeof error === 'object' && error !== null && 'message' in error)
+    ? String((error as { message?: unknown }).message)
+    : 'An error occurred'
   console.error('Supabase error:', error)
   return {
     success: false,
-    error: error.message || 'An error occurred'
+    error: message
   }
 }
 
 // Helper function untuk success response
-export const handleSupabaseSuccess = (data: any) => {
+export const handleSupabaseSuccess = <TData>(data: TData) => {
   return {
     success: true,
     data
   }
 }
+
+
+
+
+
+
 
 
 

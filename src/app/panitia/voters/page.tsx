@@ -1,7 +1,6 @@
 "use client"
 
 import { PageLayout } from "@/components/page-layout"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
@@ -15,7 +14,6 @@ import {
   IconClock,
   IconUser,
   IconLoader2,
-  IconPlus,
   IconPencil,
   IconTrash
 } from "@tabler/icons-react"
@@ -277,8 +275,9 @@ interface VoterFormProps {
 }
 
 function VoterForm({ voter, onSubmit, onCancel }: VoterFormProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Omit<Voter, 'id'>>({
     name: voter?.name || "",
+    email: voter?.email || "",
     class: voter?.class || "",
     has_voted: voter?.has_voted || false,
     voted_for: voter?.voted_for || null,
@@ -305,7 +304,17 @@ function VoterForm({ voter, onSubmit, onCancel }: VoterFormProps) {
         />
       </div>
       
-      
+      <div className="space-y-2">
+        <Label htmlFor="email" className="text-sm font-medium text-gray-700">Email</Label>
+        <Input
+          id="email"
+          type="email"
+          value={formData.email}
+          onChange={(e) => setFormData({...formData, email: e.target.value})}
+          required
+          className="w-full"
+        />
+      </div>
       <div className="space-y-2">
         <Label htmlFor="class" className="text-sm font-medium text-gray-700">Kelas</Label>
         <Input

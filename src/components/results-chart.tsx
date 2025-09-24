@@ -13,6 +13,7 @@ import {
   BarElement,
   Title
 } from 'chart.js'
+import type { TooltipItem } from 'chart.js'
 import { Pie, Bar } from 'react-chartjs-2'
 import { useState } from "react"
 import { IconRefresh } from "@tabler/icons-react"
@@ -83,9 +84,10 @@ export function ResultsChart({ candidates, onRefresh }: ResultsChartProps) {
       },
       tooltip: {
         callbacks: {
-          label: function(context: any) {
-            const percentage = ((context.parsed / totalVotes) * 100).toFixed(1)
-            return `${context.label}: ${context.parsed} suara (${percentage}%)`
+          label: function(context: TooltipItem<'pie'>) {
+            const value = typeof context.parsed === 'number' ? context.parsed : Number(context.parsed)
+            const percentage = totalVotes > 0 ? ((value / totalVotes) * 100).toFixed(1) : '0.0'
+            return `${context.label}: ${value} suara (${percentage}%)`
           }
         }
       }

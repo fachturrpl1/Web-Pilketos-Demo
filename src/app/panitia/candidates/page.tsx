@@ -20,7 +20,6 @@ import {
 } from "@tabler/icons-react"
 import { useState, useEffect } from "react"
 import { Candidate } from "@/types/database"
-import { testSupabaseConnection } from "@/lib/test-supabase"
 import { PhotoUpload } from "@/components/photo-upload"
 import Image from "next/image"
 
@@ -174,16 +173,7 @@ export default function PanitiaCandidates() {
           <p className="text-gray-600">Kelola data kandidat ketua OSIS</p>
         </div>
         <div className="flex gap-2">
-          <Button 
-            onClick={async () => {
-              const result = await testSupabaseConnection()
-              alert(result.success ? 'Koneksi Supabase berhasil!' : `Error: ${result.error}`)
-            }}
-            variant="outline"
-            disabled={isSubmitting}
-          >
-            Test Supabase
-          </Button>
+          
           <Button 
             onClick={async () => {
               if (candidates.length > 0) {

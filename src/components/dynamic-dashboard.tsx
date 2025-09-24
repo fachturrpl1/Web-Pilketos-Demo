@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge"
 // import { Button } from "@/components/ui/button"
 import { useCandidates } from "@/hooks/use-candidates"
 import { useVoters } from "@/hooks/use-voters"
-import { useElectionStats } from "@/hooks/use-election-stats"
 import { useElectionSettings } from "@/hooks/use-election-settings"
 import { useRole } from "@/contexts/RoleContext"
 import {
@@ -13,7 +12,6 @@ import {
   IconCheck,
   IconChartBar,
   IconUsersGroup,
-  IconTrophy,
   IconShieldCheck,
   IconEye,
   // IconDownload,
@@ -24,41 +22,12 @@ export function DynamicDashboard() {
   const { currentRole } = useRole()
   const { candidates, loading: candidatesLoading, error: candidatesError } = useCandidates()
   const { voters, loading: votersLoading, error: votersError } = useVoters()
-  const { stats, loading: statsLoading, error: statsError } = useElectionStats()
   const { settings } = useElectionSettings()
 
-  const loading = candidatesLoading || votersLoading || statsLoading
-  const error = candidatesError || votersError || statsError
+  const loading = candidatesLoading || votersLoading
+  const error = candidatesError || votersError
 
   const isActive = settings?.is_active ?? true
-  const startDate = settings?.start_date ? new Date(settings.start_date) : null
-  const endDate = settings?.end_date ? new Date(settings.end_date) : null
-  const timeRemaining = endDate ? Math.max(0, endDate.getTime() - Date.now()) : null
-  const remainingText = timeRemaining != null
-    ? (() => {
-        const minutes = Math.floor(timeRemaining / 60000)
-        const days = Math.floor(minutes / (60 * 24))
-        const hours = Math.floor((minutes % (60 * 24)) / 60)
-        const mins = minutes % 60
-        const parts: string[] = []
-        if (days) parts.push(`${days} hari`)
-        if (hours) parts.push(`${hours} jam`)
-        if (mins && parts.length < 2) parts.push(`${mins} menit`)
-        return parts.join(" ") || "0"
-      })()
-    : "-"
-  const lastUpdateText = settings?.update_at
-    ? (() => {
-        const delta = Date.now() - new Date(settings.update_at!).getTime()
-        const mins = Math.floor(delta / 60000)
-        if (mins < 1) return "baru saja"
-        if (mins < 60) return `${mins} menit lalu`
-        const hours = Math.floor(mins / 60)
-        if (hours < 24) return `${hours} jam lalu`
-        const days = Math.floor(hours / 24)
-        return `${days} hari lalu`
-      })()
-    : "-"
 
   const totalVotes = voters.filter(v => v.has_voted).length
   const candidateIdToVotes = new Map<number, number>()
@@ -68,8 +37,7 @@ export function DynamicDashboard() {
     }
   })
   const candidatesWithVotes = candidates.map(c => ({ ...c, votes: candidateIdToVotes.get(c.id) || 0 }))
-  const votedCount = voters.filter(v => v.has_voted).length
-  const remainingVoters = voters.filter(v => !v.has_voted).length
+  // remainingVoters was computed but not used; remove to avoid unused-var warning
 
   if (loading) {
     return (

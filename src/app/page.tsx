@@ -7,9 +7,7 @@ import {
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar"
-import { useRole } from "@/contexts/RoleContext"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Card, CardContent} from "@/components/ui/card"
 // Icons removed: not used on this page
 
 function MainContent() {
